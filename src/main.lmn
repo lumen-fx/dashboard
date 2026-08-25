@@ -1,0 +1,48 @@
+<root bg="#0b1420" padding="24" gap="16">
+  <row align="center" gap="12" height="40px">
+    <label class="title" text="Ops dashboard" />
+    <spacer />
+    <label class="caption" bind-text="clock" text="tick 0" />
+    <button id="pause" class="ghost" width="96px" height="32px" bind-text="pause_label" text="Pause" />
+  </row>
+
+  <row gap="12" height="110px">
+    <column class="stat" grow="1">
+      <label class="stat-label" text="Requests / min" />
+      <label class="stat-value" height="52px" bind-text="requests" text="0" />
+    </column>
+    <column class="stat" grow="1">
+      <label class="stat-label" text="Active users" />
+      <label class="stat-value" height="52px" bind-text="users" text="0" />
+    </column>
+    <column class="stat" grow="1">
+      <label class="stat-label" text="Error rate" />
+      <label class="stat-value accent" height="52px" bind-text="errors" text="0%" />
+    </column>
+  </row>
+
+  <column class="card" gap="10" padding="16">
+    <row gap="10" align="center">
+      <label class="caption" width="90px" text="CPU" />
+      <progress grow="1" height="10px" bind-value="cpu" max="100" />
+      <label class="caption" width="48px" text-align="end" bind-text="cpu_label" text="0%" />
+    </row>
+    <row gap="10" align="center">
+      <label class="caption" width="90px" text="Memory" />
+      <progress grow="1" height="10px" bind-value="mem" max="100" />
+      <label class="caption" width="48px" text-align="end" bind-text="mem_label" text="0%" />
+    </row>
+  </column>
+
+  <label class="caption" height="20px" text="Recent activity" />
+  <scroll grow="1">
+    <for each="activity" key="id" gap="4">
+      <row class="feed-row" align="center" gap="10" height="34px">
+        <label class="feed-time" width="70px" text="{row.time}" />
+        <label class="feed-text" grow="1" wrap="none" max-lines="1" text="{row.text}" />
+      </row>
+    </for>
+  </scroll>
+
+  <script src="main.lua" />
+</root>

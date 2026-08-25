@@ -1,0 +1,6 @@
+[app]
+entry = "main.lmn"
+
+[window]
+title = "Dashboard"
+size = [780, 620]

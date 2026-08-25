@@ -1,0 +1,36 @@
+:root {
+  --color-accent:   #5fd9e0;
+  --color-card:     #101d2e;
+  --color-row:      #0e1927;
+  --color-hover:    #1d4477;
+  --color-on-bg:    #ffffff;
+  --color-on-bg-dim:#7f96ad;
+  --radius-md:      12;
+}
+
+.title   { font-size: 22; text-color: var(--color-on-bg); }
+.caption { font-size: 12; text-color: var(--color-on-bg-dim); }
+
+.ghost {
+  bg: var(--color-card);
+  hover-bg: var(--color-hover);
+  text-color: var(--color-on-bg-dim);
+  radius: var(--radius-md);
+  text-align: center;
+  font-size: 13;
+}
+.ghost:focus { outline: 2 var(--color-accent); }
+
+.card { bg: var(--color-card); radius: var(--radius-md); }
+
+.stat { bg: var(--color-card); radius: var(--radius-md); padding: 14; gap: 8; }
+.stat-label { font-size: 12; text-color: var(--color-on-bg-dim); }
+.stat-value { font-size: 34; text-color: var(--color-on-bg); }
+.stat-value.accent { text-color: var(--color-accent); }
+
+progress { bg: var(--color-row); radius: 5; }
+.progress-fill { bg: var(--color-accent); radius: 5; }
+
+.feed-row  { bg: var(--color-row); radius: 8; padding: 0 10; }
+.feed-time { font-size: 12; text-color: var(--color-on-bg-dim); }
+.feed-text { font-size: 13; text-color: var(--color-on-bg); }

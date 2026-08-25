@@ -1,0 +1,17 @@
+name: check
+
+# The template must scaffold into a working app: install the released
+# toolchain and run lumenc check against this tree.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lumen-fx/lumen/tools/setup-lumen@main
+      - run: lumenc check .

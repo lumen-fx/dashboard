@@ -1,7 +1,9 @@
 name: release
 
 # A pushed tag publishes the template as a release with a tarball asset, so
-# a fixed URL always serves the latest tagged tree.
+# a fixed URL always serves the latest tagged tree. A tag is named for the
+# Lumen release its tree is for (v0.0.6 for Lumen 0.0.6), and the tag for a
+# Lumen version that has not shipped yet may be re-cut until it does.
 
 on:
   push:
@@ -24,5 +26,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" out/template.tar.gz \
-            --title "${GITHUB_REF_NAME}" --notes ""
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" out/template.tar.gz --clobber
+            gh release edit "${GITHUB_REF_NAME}" --title "${GITHUB_REF_NAME}"
+          else
+            gh release create "${GITHUB_REF_NAME}" out/template.tar.gz \
+              --title "${GITHUB_REF_NAME}" --notes ""
+          fi
